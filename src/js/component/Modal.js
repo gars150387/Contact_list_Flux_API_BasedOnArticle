@@ -29,10 +29,14 @@ export const Modal = props => {
 						<p>Warning: unknown consequences after this point... Kidding!</p>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-primary">
+						<button type="button" className="btn btn-primary" onClick={() => setState(false)}>
 							Oh no!
 						</button>
-						<button type="button" className="btn btn-secondary" data-dismiss="modal">
+						<button
+							type="button"
+							className="btn btn-secondary"
+							data-dismiss="modal"
+							onClick={() => actions.deleteContact(e.id)}>
 							Do it!
 						</button>
 					</div>

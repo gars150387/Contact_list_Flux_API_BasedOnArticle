@@ -59,6 +59,21 @@ const getState = ({ getStore, setStore, getActiosn }) => {
 								});
 						}).catch(e => console.error(e));
 				});
+			},
+			deleteContact(id) {
+				fetch(url + id, {
+					method: "DELETE"
+				}).then(() => {
+					fetch(url + "agenda/gars_1503")
+						.then(response => response.json())
+						.then(result => {
+							console.log("result", result),
+								setStore({
+									contacts: result
+								});
+						})
+						.catch(e => console.error(e));
+				});
 			}
 		}
 	};
