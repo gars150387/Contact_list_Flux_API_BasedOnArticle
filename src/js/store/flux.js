@@ -16,27 +16,27 @@ const getState = ({ getStore, setStore, getActiosn }) => {
 					})
 					.catch(e => console.error(e));
 			},
-			addContact(name, phone, email, address){
-				fetch( url,{
+			addContact(name, phone, email, address) {
+				fetch(url, {
 					method: "POST",
-					headers: {"Content-type": "application/json"},
-					body: JSON.stringigy({
+					headers: { "Content-type": "application/json" },
+					body: JSON.stringify({
 						full_name: name,
 						phone: phone,
 						address: address,
 						agenda_slug: "gars_1503"
 					})
-				}).then(() =>{
+				}).then(() => {
 					fetch(url + "agenda/gars_1503")
-					.then(response => response.json())
-					.then( result => {
-						console.log("result", result),
-						setStore({
-							contacts: result
-						});
-					})
-					.catch(e=> console.error(e));
-				})
+						.then(response => response.json())
+						.then(result => {
+							console.log("result", result),
+								setStore({
+									contacts: result
+								});
+						})
+						.catch(e => console.error(e));
+				});
 			}
 		}
 	};
