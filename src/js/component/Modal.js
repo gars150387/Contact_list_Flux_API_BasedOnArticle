@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export const Modal = props => {
 	const [state, setState] = useState({
@@ -29,9 +30,11 @@ export const Modal = props => {
 						<p>Warning: unknown consequences after this point... Kidding!</p>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-primary" onClick={() => setState(false)}>
-							Oh no!
-						</button>
+						<Link to="/">
+							<button type="button" className="btn btn-primary">
+								Oh no!
+							</button>
+						</Link>
 						<button
 							type="button"
 							className="btn btn-secondary"
