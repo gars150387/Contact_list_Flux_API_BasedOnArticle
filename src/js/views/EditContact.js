@@ -3,14 +3,13 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
-export const EditContact = prop => {
+export const EditContact = props => {
 	const { actions } = useContext(Context);
 	const [phone, setPhone] = useState("");
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [address, setAddress] = useState("");
-	const data = store.contacts;
-	console.log("try", data);
+	console.log("try", store.contacts);
 
 	return (
 		<div className="container">
@@ -23,7 +22,7 @@ export const EditContact = prop => {
 							type="text"
 							className="form-control"
 							placeholder="Full Name"
-							defaultValue={data[props.match.params.index].full_name}
+							defaultValue={store.contacts[props.match.params.index].full_name}
 							onChange={e => setName(e.target.value)}
 						/>
 					</div>
@@ -33,7 +32,7 @@ export const EditContact = prop => {
 							type="email"
 							className="form-control"
 							placeholder="Enter email"
-							defaultValue={data[props.match.params.index].email}
+							defaultValue={store.contacts[props.match.params.index].email}
 							onChange={e => setEmail(e.target.value)}
 						/>
 					</div>
@@ -43,7 +42,7 @@ export const EditContact = prop => {
 							type="phone"
 							className="form-control"
 							placeholder="Enter phone"
-							defaultValue={data[props.match.params.index].phone}
+							defaultValue={store.contacts[props.match.params.index].phone}
 							onChange={e => setPhone(e.target.value)}
 						/>
 					</div>
@@ -53,7 +52,7 @@ export const EditContact = prop => {
 							type="text"
 							className="form-control"
 							placeholder="Enter address"
-							defaultValue={data[props.match.params.index].address}
+							defaultValue={store.contacts[props.match.params.index].address}
 							onChange={e => setAddress(e.target.value)}
 						/>
 					</div>
