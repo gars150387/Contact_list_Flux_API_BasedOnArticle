@@ -44,7 +44,7 @@ const getState = ({ getStore, setStore, getActiosn }) => {
 					method: "PUT",
 					headers: { "Content-type": "applications?/json" },
 					body: JSON.stringify({
-						fullname: name,
+						full_name: name,
 						phone: phone,
 						email: email,
 						address: address,

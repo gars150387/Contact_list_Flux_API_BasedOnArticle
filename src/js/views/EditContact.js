@@ -4,11 +4,13 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 export const EditContact = props => {
-	const { actions } = useContext(Context);
-	const [phone, setPhone] = useState("");
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
-	const [address, setAddress] = useState("");
+	const { store, actions } = useContext(Context);
+	let contact = store.contacts[props.match.params.index];
+	const [phone, setPhone] = useState(contact ? contact.phone : "");
+	const [name, setName] = useState(contact ? contact.name : "");
+	const [email, setEmail] = useState(contact ? contact.email : "");
+	const [address, setAddress] = useState(contact ? contact.address : "");
+	// const store = store.contacts;
 	console.log("try", store.contacts);
 
 	return (
@@ -22,7 +24,7 @@ export const EditContact = props => {
 							type="text"
 							className="form-control"
 							placeholder="Full Name"
-							defaultValue={store.contacts[props.match.params.index].full_name}
+							defaultValue={name}
 							onChange={e => setName(e.target.value)}
 						/>
 					</div>
@@ -32,7 +34,7 @@ export const EditContact = props => {
 							type="email"
 							className="form-control"
 							placeholder="Enter email"
-							defaultValue={store.contacts[props.match.params.index].email}
+							defaultValue={email}
 							onChange={e => setEmail(e.target.value)}
 						/>
 					</div>
@@ -42,7 +44,7 @@ export const EditContact = props => {
 							type="phone"
 							className="form-control"
 							placeholder="Enter phone"
-							defaultValue={store.contacts[props.match.params.index].phone}
+							defaultValue={phone}
 							onChange={e => setPhone(e.target.value)}
 						/>
 					</div>
@@ -52,7 +54,7 @@ export const EditContact = props => {
 							type="text"
 							className="form-control"
 							placeholder="Enter address"
-							defaultValue={store.contacts[props.match.params.index].address}
+							defaultValue={address}
 							onChange={e => setAddress(e.target.value)}
 						/>
 					</div>
