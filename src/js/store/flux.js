@@ -6,7 +6,7 @@ const getState = ({ getStore, setStore, getActiosn }) => {
 		},
 		actions: {
 			loadContact() {
-				fetch(url + "agenda/downtown_xii")
+				fetch(url + "agenda/gars_1503")
 					.then(response => response.json())
 					.then(result => {
 						console.log("Get Contact", result),
