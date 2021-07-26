@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import Property from "prop-types";
 
-export const AddContact = () => {
+export const EditContact = () => {
 	const { actions } = useContext(Context);
 	const [phone, setPhone] = useState("");
 	const [name, setName] = useState("");

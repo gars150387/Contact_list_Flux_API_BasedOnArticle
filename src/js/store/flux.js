@@ -23,6 +23,7 @@ const getState = ({ getStore, setStore, getActiosn }) => {
 					body: JSON.stringify({
 						full_name: name,
 						phone: phone,
+						email: email,
 						address: address,
 						agenda_slug: "gars_1503"
 					})
@@ -36,6 +37,27 @@ const getState = ({ getStore, setStore, getActiosn }) => {
 								});
 						})
 						.catch(e => console.error(e));
+				});
+			},
+			editContact(id, name, phone, email, address) {
+				fetch(url + id, {
+					method: "PUT",
+					headers: { "Content-type": "applications?/json" },
+					body: JSON.stringify({
+						fullname: name,
+						phone: phone,
+						email: email,
+						address: address,
+						agenda_slug: "gars_1503"
+					})
+				}).then(() => {
+					fetch(url + "agenda/gars_1503").then(response => response.json()),
+						then(result => {
+							console.log("result", result),
+								setStore({
+									contacts: result
+								});
+						}).catch(e => console.error(e));
 				});
 			}
 		}
