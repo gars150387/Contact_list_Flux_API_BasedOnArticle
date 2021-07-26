@@ -4,10 +4,11 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 export const EditContact = props => {
+	let id = props.match.params.id;
 	const { store, actions } = useContext(Context);
 	let contact = store.contacts[props.match.params.index];
 	const [phone, setPhone] = useState(contact ? contact.phone : "");
-	const [name, setName] = useState(contact ? contact.name : "");
+	const [name, setName] = useState(contact ? contact.full_name : "");
 	const [email, setEmail] = useState(contact ? contact.email : "");
 	const [address, setAddress] = useState(contact ? contact.address : "");
 	// const store = store.contacts;
@@ -73,7 +74,7 @@ export const EditContact = props => {
 			</div>
 		</div>
 	);
-	EditContact.propTypes = {
-		match: PropTypes.object
-	};
+};
+EditContact.propTypes = {
+	match: PropTypes.object
 };
