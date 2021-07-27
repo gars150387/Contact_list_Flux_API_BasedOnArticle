@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
+import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -8,10 +8,16 @@ export const Modal = props => {
 	const [state, setState] = useState({
 		//initialize state here
 	});
-	const { store, actions } = useContext(Context);
 	// const id = props.match.params.id;
+
+	const { store, actions } = useContext(Context);
 	return (
-		<div className="modal" tabIndex="-1" role="dialog" style={{ display: props.show ? "inline-block" : "none" }}>
+		<div
+			className="modal"
+			tabIndex="-1"
+			role="dialog"
+			key={index}
+			style={{ display: props.show ? "inline-block" : "none" }}>
 			<div className="modal-dialog" role="document">
 				<div className="modal-content">
 					<div className="modal-header">
@@ -36,7 +42,11 @@ export const Modal = props => {
 						<button type="button" className="btn btn-primary" data-dismiss="modal">
 							Oh no!
 						</button>
-						<button type="button" className="btn btn-secondary" onClick={() => actions.deleteContact(id)}>
+						<button
+							type="button"
+							className="btn btn-secondary"
+							// key={index}
+							onClick={() => actions.deleteContact(e.id)}>
 							Do it!
 						</button>
 					</div>
@@ -50,6 +60,8 @@ export const Modal = props => {
  * your component's properties
  **/
 Modal.propTypes = {
+	index: PropTypes.object,
+	id: PropTypes.object,
 	match: PropTypes.object,
 	history: PropTypes.object,
 	onClose: PropTypes.func,
@@ -61,6 +73,7 @@ Modal.propTypes = {
  * your component's properties
  **/
 Modal.defaultProps = {
+	modal: PropTypes.string,
 	show: false,
 	onClose: null
 };
