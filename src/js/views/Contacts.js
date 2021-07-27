@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 
 import { ContactCard } from "../component/ContactCard.js";
 import { Modal } from "../component/Modal";
+import { Context } from "../store/appContext.js";
 
 export const Contacts = props => {
 	const [state, setState] = useState({
 		showModal: false
 	});
+	const { actions, store } = useState(Context);
 
 	return (
 		<div className="container">
@@ -19,7 +21,7 @@ export const Contacts = props => {
 				</p>
 				<div id="contacts" className="panel-collapse collapse show" aria-expanded="true">
 					<ul className="list-group pull-down" id="contact-list">
-						<ContactCard onDelete={() => setState({ showModal: true })} />
+						<ContactCard onClick={() => actions.deleteContac(id)} />
 						{/* <ContactCard />
 						<ContactCard />
 						<ContactCard /> */}
