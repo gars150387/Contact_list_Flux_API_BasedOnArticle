@@ -7,8 +7,8 @@ import { Context } from "../store/appContext";
 export const Modal = props => {
 	const [state, setState] = useState({
 		//initialize state here
+		showModal: false
 	});
-	// const id = props.match.params.id;
 
 	const { store, actions } = useContext(Context);
 	return (
@@ -16,7 +16,7 @@ export const Modal = props => {
 			className="modal"
 			tabIndex="-1"
 			role="dialog"
-			key={index}
+			// key={index}
 			style={{ display: props.show ? "inline-block" : "none" }}>
 			<div className="modal-dialog" role="document">
 				<div className="modal-content">
@@ -24,7 +24,7 @@ export const Modal = props => {
 						<h5 className="modal-title">Are you sure?</h5>
 						{props.onClose ? (
 							<button
-								onClick={() => props.onClose()}
+								onClick={() => props.onClose({ showModal: true })}
 								type="button"
 								className="close"
 								data-dismiss="modal"
@@ -39,14 +39,18 @@ export const Modal = props => {
 						<p>Warning: unknown consequences after this point... Kidding!</p>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-primary" data-dismiss="modal">
+						<button
+							type="button"
+							className="btn btn-primary"
+							data-dismiss="modal"
+							onClick={() => props.onClose()}>
 							Oh no!
 						</button>
 						<button
 							type="button"
 							className="btn btn-secondary"
 							// key={index}
-							onClick={() => actions.deleteContact(e.id)}>
+							onClick={() => actions.deleteContact(props.match.params.id)}>
 							Do it!
 						</button>
 					</div>
@@ -60,8 +64,8 @@ export const Modal = props => {
  * your component's properties
  **/
 Modal.propTypes = {
-	index: PropTypes.object,
-	id: PropTypes.object,
+	index: PropTypes.element,
+	id: PropTypes.element,
 	match: PropTypes.object,
 	history: PropTypes.object,
 	onClose: PropTypes.func,
@@ -72,7 +76,7 @@ Modal.propTypes = {
  * Define the default values for
  * your component's properties
  **/
-Modal.defaultProps = {
+Modal.propTypes = {
 	modal: PropTypes.string,
 	show: false,
 	onClose: null
