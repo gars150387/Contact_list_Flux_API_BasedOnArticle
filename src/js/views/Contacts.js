@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { ContactCard } from "../component/ContactCard.js";
 import { Modal } from "../component/Modal";
 
-export const Contacts = () => {
+export const Contacts = props => {
 	const [state, setState] = useState({
 		showModal: false
 	});

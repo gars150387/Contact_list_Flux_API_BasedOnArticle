@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const AddContact = () => {
-	const { actions } = useContext(Context);
+	const { store, actions } = useContext(Context);
 	const [phone, setPhone] = useState("");
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");

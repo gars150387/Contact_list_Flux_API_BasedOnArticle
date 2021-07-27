@@ -64,7 +64,7 @@ const getState = ({ getStore, setStore, getActiosn }) => {
 			},
 			deleteContact(id) {
 				fetch(url + id, {
-					method: "DELETE"
+					method: "delete"
 				}).then(() => {
 					fetch(url + "agenda/gars_1503")
 						.then(response => response.json())

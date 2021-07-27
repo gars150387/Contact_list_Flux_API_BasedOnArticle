@@ -4,11 +4,13 @@ import PropTypes from "prop-types";
 // import MikePhoto from "../../img/m101.jpg";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import { Modal } from "./Modal";
 
 export const ContactCard = props => {
 	const [state, setState] = useState({
 		//initialize state here
 	});
+	// let id = props.match.params.id;
 	const { store, actions } = useContext(Context);
 	console.log("Storeeeeee", store.contacts);
 
@@ -33,11 +35,7 @@ export const ContactCard = props => {
 												<i className="fas fa-pencil-alt mr-3" />
 											</button>
 										</Link>
-										<button
-											className="btn"
-											onClick={() => {
-												props.onDelete();
-											}}>
+										<button className="btn" onClick={() => props.onDelete()}>
 											<i className="fas fa-trash-alt" />
 										</button>
 									</div>

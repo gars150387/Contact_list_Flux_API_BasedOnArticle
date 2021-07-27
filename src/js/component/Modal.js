@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ export const Modal = props => {
 		//initialize state here
 	});
 	const { store, actions } = useContext(Context);
-
+	// const id = props.match.params.id;
 	return (
 		<div className="modal" tabIndex="-1" role="dialog" style={{ display: props.show ? "inline-block" : "none" }}>
 			<div className="modal-dialog" role="document">
@@ -33,16 +33,10 @@ export const Modal = props => {
 						<p>Warning: unknown consequences after this point... Kidding!</p>
 					</div>
 					<div className="modal-footer">
-						<Link to="/">
-							<button type="button" className="btn btn-primary">
-								Oh no!
-							</button>
-						</Link>
-						<button
-							type="button"
-							className="btn btn-secondary"
-							data-dismiss="modal"
-							onClick={() => actions.deleteContact(element.id)}>
+						<button type="button" className="btn btn-primary" data-dismiss="modal">
+							Oh no!
+						</button>
+						<button type="button" className="btn btn-secondary" onClick={() => actions.deleteContact(id)}>
 							Do it!
 						</button>
 					</div>
@@ -56,6 +50,7 @@ export const Modal = props => {
  * your component's properties
  **/
 Modal.propTypes = {
+	match: PropTypes.object,
 	history: PropTypes.object,
 	onClose: PropTypes.func,
 	show: PropTypes.bool
