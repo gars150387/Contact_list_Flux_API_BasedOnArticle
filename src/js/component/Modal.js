@@ -24,7 +24,7 @@ export const Modal = props => {
 						<h5 className="modal-title">Are you sure?</h5>
 						{props.onClose ? (
 							<button
-								onClick={() => props.onClose({ showModal: true })}
+								onClick={() => props.onClose()}
 								type="button"
 								className="close"
 								data-dismiss="modal"
@@ -50,7 +50,7 @@ export const Modal = props => {
 							type="button"
 							className="btn btn-secondary"
 							// key={index}
-							onClick={() => actions.deleteContact(props.match.params.id)}>
+							onClick={() => actions.deleteContact(props.id)}>
 							Do it!
 						</button>
 					</div>
@@ -64,13 +64,14 @@ export const Modal = props => {
  * your component's properties
  **/
 Modal.propTypes = {
-	index: PropTypes.element,
-	id: PropTypes.element,
 	match: PropTypes.object,
 	history: PropTypes.object,
 	onClose: PropTypes.func,
-	show: PropTypes.bool
+	id: PropTypes.string
 };
+// deleteConatct.propTypes = {
+// 	match: PropTypes.object
+// };
 
 /**
  * Define the default values for
