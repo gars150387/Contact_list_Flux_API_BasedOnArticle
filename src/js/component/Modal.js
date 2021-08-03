@@ -24,7 +24,7 @@ export const Modal = props => {
 						<h5 className="modal-title">Are you sure?</h5>
 						{props.onClose ? (
 							<button
-								onClick={() => props.onClose()}
+								onClick={() => props.onClose({ showModal: false })}
 								type="button"
 								className="close"
 								data-dismiss="modal"
