@@ -31,10 +31,9 @@ const getState = ({ getStore, setStore, getActiosn }) => {
 					fetch(url + "agenda/gars_1503")
 						.then(response => response.json())
 						.then(result => {
-							console.log("result", result),
-								setStore({
-									contacts: result
-								});
+							setStore({
+								contacts: result
+							});
 						})
 						.catch(e => console.error(e));
 				});
